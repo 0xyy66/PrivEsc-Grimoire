@@ -15,4 +15,4 @@ The script reads from a json file created with [gtfobin-scrape] and lists the po
 
 Special thanks to [GTFOBins](https://github.com/GTFOBins).
 
-![privescg-console]
+![privesc-console](https://user-images.githubusercontent.com/72035730/194287489-dc16cb37-7f7d-41b6-bf7d-dd3dea8240c0.png)
