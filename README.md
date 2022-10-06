@@ -11,7 +11,7 @@ I prefer to stick to my black console.
 
 That's why I created a command line tool to search for binaries privesc exploits.
 
-The script reads from a json file created with [gtfobin-scrape] and lists the possible ways to escalate privileges with a binary.
+The script reads from a json file created with [gtfobins-scrape] and lists the possible ways to escalate privileges with a binary.
 
 Special thanks to [GTFOBins](https://github.com/GTFOBins).
 
