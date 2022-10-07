@@ -2,6 +2,8 @@
 import json
 import glob
 from colorama import Fore, init
+import os
+import sys
 
 init(autoreset=True)
 symbol = '[x]'
@@ -46,19 +48,23 @@ if __name__ == '__main__':
     banner()
     jsonexists = glob.glob('gtfobins.json')
     if not jsonexists:
-        print(Fore.RED + symbol, " Can't find file 'gtfobins.json', do you want me to download it from https://github.com/0xyy66/privesc_grimoire/blob/main/gtfobins.json ?[Y/n]")
-        download = str(input(Fore.RED + symbol + Fore.WHITE + ' '))
+        print(Fore.RED + symbol, " Can't find file 'gtfobins.json'.")
+        download = str(input(Fore.RED + symbol + Fore.RESET + '  Do you want me to download it from https://raw.githubusercontent.com/0xyy66/PrivEsc-Grimoire/main/gtfobins.json?[Y/n] '))
         if download.lower() == 'y':
-            print(Fore.RED + symbol, ' downloading...')
+            print(Fore.RED + symbol, " Downloading...")
+            os.system('wget https://raw.githubusercontent.com/0xyy66/PrivEsc-Grimoire/main/gtfobins.json -O gtfobins.json')
+        else:
+            print(Fore.RED + "Can't work without file gtfobins.json")
+            sys.exit(0)
     else:
         print(Fore.RED + symbol, " File 'gtfobins.json' found, proceed to load data")
-        pe_dict = load_from_file()
+    pe_dict = load_from_file()
     pe = False
     while not pe:
-        bin = str(input('\n' + Fore.RED + symbol + Fore.WHITE + " Binary to find: "))
+        bin = str(input('\n' + Fore.RED + symbol + Fore.RESET + "  Binary to find: "))
         pe = find_pe(pe_dict, bin)
     print_funcs(pe)
-    func = str(input('\n' + Fore.RED + symbol + Fore.WHITE + ' Enter index: '))
+    func = str(input('\n' + Fore.RED + symbol + Fore.RESET + '  Enter index: '))
     try:
         func = int(func)
     except ValueError:
